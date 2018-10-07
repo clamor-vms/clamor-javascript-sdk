@@ -9,7 +9,7 @@ export class CampaignAboutService extends BaseService {
         super(authContext);
     }
     
-    protected get Url(): string { return super.Url + "campaign/about"; }
+    protected get Url(): string { return "/campaign/about"; }
 
     public GetCampaignServiceInfo(): Promise<CampaignAbout> {
         return this.SendRequest<CampaignAbout>(HttpMethod.GET);

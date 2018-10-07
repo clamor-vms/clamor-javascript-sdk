@@ -14,7 +14,7 @@ export class BaseService {
         this._authContext = authContext;
     }
 
-    protected SendRequest<ReturnType>(method: HttpMethod, postData: object | null = null, overrideJwt: string = ""): Promise<ReturnType> {
+    protected SendRequest<ReturnType>(method: HttpMethod, postData: object | null = null): Promise<ReturnType> {
         return new Promise((resolve, reject) => {
             let xhr: XMLHttpRequest = new XMLHttpRequest();
             let url: string = this.FullUrl;
@@ -38,9 +38,7 @@ export class BaseService {
 
             xhr.open(method, url);
 
-            this.AuthLogic(xhr, overrideJwt);
-
-            xhr.setRequestHeader('Content-type', 'application/json');
+            this.AuthLogic(xhr);
 
             xhr.onload = () => {
                 if (xhr.status === 200) {
@@ -64,13 +62,9 @@ export class BaseService {
         });
     }
 
-    protected AuthLogic(xhr: XMLHttpRequest, overrideJwt: string = "") {
-        let jwt: string = this.Auth.Token;
-        if(overrideJwt) {
-            jwt = overrideJwt;
-        }
-
-        xhr.setRequestHeader('Authorization', "Bearer " + jwt);
+    protected AuthLogic(xhr: XMLHttpRequest) {
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.setRequestHeader('Authorization', "Bearer " + this.Auth.Token);
     }
 
     private DoesMethodHaveBody(method: HttpMethod): boolean {
