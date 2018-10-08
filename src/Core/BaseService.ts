@@ -1,7 +1,8 @@
 import { ObjectUtils } from '../Utils/ObjectUtils';
 
-import { HttpMethod } from './HttpMethod';
 import { AuthContext } from './AuthContext';
+
+import { HttpMethod } from './HttpMethod';
 
 export class BaseService {
     private _authContext: AuthContext;

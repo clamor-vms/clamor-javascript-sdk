@@ -5,8 +5,8 @@
   "keywords": [],
   "author": "",
   "license": "AGPLv3",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc",
@@ -23,7 +23,7 @@
     "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.ts?$"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "devDependencies": {
     "@types/jest": "^23.3.3",

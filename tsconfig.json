@@ -1,13 +1,19 @@
 {
-  "compilerOptions": {
-    "target": "ES2015",
-    "module": "amd",
-    "declaration": true,
-    "outFile": "lib/index.js",
-    "strict": true,
-    "esModuleInterop": true
-  },
-  "include": [
-    "src/**/*"
-  ]
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "commonjs",
+        "declaration": true,
+        "outDir": "dist",
+        "strict": true,
+        "moduleResolution": "node",
+        "lib": [ "es2015", "dom" ]
+    },
+    "include": [
+         "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "tests",
+        "dist"
+    ]
 }
