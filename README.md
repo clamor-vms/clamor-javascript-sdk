@@ -1,1 +1,1 @@
-# skaioskit-javascript-sdk
+# clamor-javascript-sdk

@@ -24,11 +24,11 @@ describe("CampaignAboutService", () => {
         mock.get('http://example.com/campaign/about', {
             status: 200,
             reason: 'Created',
-            body: '{"Name": "Skaioskit Campaign Service"}'
+            body: '{"Name": "Clamor Campaign Service"}'
         });
 
         service.GetCampaignServiceInfo().then((x: CampaignAbout) => {
-            expect(x.Name).toEqual("Skaioskit Campaign Service");
+            expect(x.Name).toEqual("Clamor Campaign Service");
 
             done();
         });
