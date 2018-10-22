@@ -19,8 +19,6 @@ export class BaseService {
         return new Promise((resolve, reject) => {
             let url: string = this.FullUrl;
             let xhr: XMLHttpRequest = new XMLHttpRequest();
-            xhr = this.AuthLogic(xhr);
-
             switch(method) {
                 case HttpMethod.GET:
                     if(postData) {
@@ -39,6 +37,8 @@ export class BaseService {
             }
 
             xhr.open(method, url);
+            this.AuthLogic(xhr);
+
             xhr.onload = () => {
                 if (xhr.status === 200) {
                     let result: ReturnType = JSON.parse(xhr.responseText);
@@ -61,10 +61,9 @@ export class BaseService {
         });
     }
 
-    protected AuthLogic(xhr: XMLHttpRequest): XMLHttpRequest {
+    protected AuthLogic(xhr: XMLHttpRequest) {
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.setRequestHeader('Authorization', "Bearer " + this.Auth.Token);
-        return xhr;
     }
 
     private DoesMethodHaveBody(method: HttpMethod): boolean {
