@@ -61,7 +61,7 @@ typings/
 .next
 
 # output
-dist
+# dist
 
 # vim swap files
 *.swp
