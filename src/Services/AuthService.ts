@@ -13,15 +13,18 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from '../Core/AuthContext';
+import { BaseService } from '../Core/BaseService';
 
-export class BaseService {
-    private _authContext: AuthContext;
-    protected get Auth(): AuthContext {
-        return this._authContext;
-    }
+import AuthAboutEndPoint from './EndPoints/Auth/AuthAboutEndPoint';
+
+export class AuthService extends BaseService {
+    private _about: any;
+    public get About(): any { return this._about; }
 
     constructor(authContext: AuthContext) {
-        this._authContext = authContext;
+        super(authContext);
+
+        this._about = new AuthAboutEndPoint(this.Auth);
     }
 }

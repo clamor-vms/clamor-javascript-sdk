@@ -14,15 +14,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const BaseService_1 = require("../Core/BaseService");
-const HttpMethod_1 = require("../Core/HttpMethod");
-class CampaignAboutService extends BaseService_1.BaseService {
-    constructor(authContext) {
-        super(authContext);
-    }
-    get Url() { return "/campaign/about"; }
-    GetCampaignServiceInfo() {
-        return this.SendRequest(HttpMethod_1.HttpMethod.GET);
-    }
+const BaseEndPoint_1 = require("../../../Core/BaseEndPoint");
+class CampaignEndPoint extends BaseEndPoint_1.BaseEndPoint {
+    get Url() { return super.Url + "campaign/campaign"; }
 }
-exports.CampaignAboutService = CampaignAboutService;
+exports.default = BaseEndPoint_1.GetAllEndPointable()(BaseEndPoint_1.GetEndPointable()(BaseEndPoint_1.PostEndPointable()(BaseEndPoint_1.PutEndPointable()(BaseEndPoint_1.DeleteEndPointable()(CampaignEndPoint)))));

@@ -13,15 +13,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { AuthContext } from "./AuthContext";
+import { BaseEndPoint, GetAllEndPointable } from '../../../Core/BaseEndPoint';
 
-export class BaseService {
-    private _authContext: AuthContext;
-    protected get Auth(): AuthContext {
-        return this._authContext;
-    }
+import { CampaignAbout } from '../../../Models/CampaignAbout';
 
-    constructor(authContext: AuthContext) {
-        this._authContext = authContext;
-    }
+class CampaignAboutEndPoint extends BaseEndPoint {
+    protected get Url(): string { return super.Url + "campaign/about"; }
 }
+
+export default GetAllEndPointable<CampaignAbout>()(CampaignAboutEndPoint);

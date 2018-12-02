@@ -15,26 +15,15 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const BaseService_1 = require("../Core/BaseService");
-const HttpMethod_1 = require("../Core/HttpMethod");
+const CampaignAboutEndPoint_1 = require("./EndPoints/Campaign/CampaignAboutEndPoint");
+const CampaignEndPoint_1 = require("./EndPoints/Campaign/CampaignEndPoint");
 class CampaignService extends BaseService_1.BaseService {
+    get About() { return this._about; }
+    get Campaign() { return this._campaign; }
     constructor(authContext) {
         super(authContext);
-    }
-    get Url() { return super.Url + "campaign/campaign"; }
-    GetCampaigns() {
-        return this.SendRequest(HttpMethod_1.HttpMethod.GET);
-    }
-    GetCampaign(campaignId) {
-        return this.SendRequest(HttpMethod_1.HttpMethod.GET, { campaginId: campaignId });
-    }
-    CreateCampaign(campaign) {
-        return this.SendRequest(HttpMethod_1.HttpMethod.POST, { campaign: campaign });
-    }
-    UpdateCampaign(campaign) {
-        return this.SendRequest(HttpMethod_1.HttpMethod.PUT, { campaign: campaign });
-    }
-    DeleteCampaign(campaignId) {
-        return this.SendRequest(HttpMethod_1.HttpMethod.DELETE, { campaginId: campaignId });
+        this._about = new CampaignAboutEndPoint_1.default(this.Auth);
+        this._campaign = new CampaignEndPoint_1.default(this.Auth);
     }
 }
 exports.CampaignService = CampaignService;

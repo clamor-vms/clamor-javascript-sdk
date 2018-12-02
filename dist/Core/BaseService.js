@@ -14,84 +14,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const ObjectUtils_1 = require("../Utils/ObjectUtils");
-const HttpMethod_1 = require("./HttpMethod");
 class BaseService {
     get Auth() {
         return this._authContext;
     }
-    get Url() {
-        return "/";
-    }
-    get FullUrl() {
-        return this.Auth.Domain + this.Url;
-    }
     constructor(authContext) {
         this._authContext = authContext;
-    }
-    SendRequest(method, postData = null) {
-        return new Promise((resolve, reject) => {
-            let url = this.FullUrl;
-            let xhr = new XMLHttpRequest();
-            switch (method) {
-                case HttpMethod_1.HttpMethod.GET:
-                    if (postData) {
-                        url = url + "?" + ObjectUtils_1.ObjectUtils.BuildQueryString(postData);
-                    }
-                    break;
-                case HttpMethod_1.HttpMethod.POST:
-                    break;
-                case HttpMethod_1.HttpMethod.PUT:
-                    break;
-                case HttpMethod_1.HttpMethod.DELETE:
-                    if (postData) {
-                        url = url + "?" + ObjectUtils_1.ObjectUtils.BuildQueryString(postData);
-                    }
-                    break;
-            }
-            xhr.open(method, url);
-            this.AuthLogic(xhr);
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    let result = JSON.parse(xhr.responseText);
-                    resolve(result);
-                }
-                else {
-                    try {
-                        reject(new Error(JSON.stringify({
-                            message: "invalid response.",
-                            xhr: xhr,
-                            data: JSON.parse(xhr.responseText)
-                        })));
-                    }
-                    catch (e) {
-                        reject(new Error(JSON.stringify({
-                            message: "invalid response.",
-                            xhr: xhr,
-                            data: xhr.responseText,
-                            exception: e
-                        })));
-                    }
-                }
-            };
-            if (this.DoesMethodHaveBody(method)) {
-                xhr.send(JSON.stringify(postData));
-            }
-            else {
-                xhr.send();
-            }
-        });
-    }
-    AuthLogic(xhr) {
-        xhr.setRequestHeader("Content-type", "application/json");
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        xhr.setRequestHeader("Authorization", "Bearer " + this.Auth.Token);
-    }
-    DoesMethodHaveBody(method) {
-        if (method === HttpMethod_1.HttpMethod.POST || method === HttpMethod_1.HttpMethod.PUT) {
-            return true;
-        }
-        return false;
     }
 }
 exports.BaseService = BaseService;

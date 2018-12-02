@@ -1,3 +1,4 @@
+"use strict";
 /*
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -12,16 +13,9 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-import { AuthContext } from "./AuthContext";
-
-export class BaseService {
-    private _authContext: AuthContext;
-    protected get Auth(): AuthContext {
-        return this._authContext;
-    }
-
-    constructor(authContext: AuthContext) {
-        this._authContext = authContext;
-    }
+Object.defineProperty(exports, "__esModule", { value: true });
+const BaseEndPoint_1 = require("../../../Core/BaseEndPoint");
+class CampaignAboutEndPoint extends BaseEndPoint_1.BaseEndPoint {
+    get Url() { return super.Url + "campaign/about"; }
 }
+exports.default = BaseEndPoint_1.GetAllEndPointable()(CampaignAboutEndPoint);

@@ -13,20 +13,22 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { AuthContext } from '../Core/AuthContext';
-import { BaseService } from '../Core/BaseService';
-import { HttpMethod } from '../Core/HttpMethod';
+import { BaseEndPoint, GetAllEndPointable, GetEndPointable, PostEndPointable, PutEndPointable, DeleteEndPointable } from '../../../Core/BaseEndPoint';
 
-import { AuthAbout } from '../Models/AuthAbout';
+import { Campaign } from '../../../Models/Campaign';
 
-export class AuthAboutService extends BaseService {
-    constructor(authContext: AuthContext) {
-        super(authContext);
-    }
-    
-    protected get Url(): string { return "/auth/about"; }
-
-    public GetAuthServiceInfo(): Promise<AuthAbout> {
-        return this.SendRequest<AuthAbout>(HttpMethod.GET);
-    }
+class CampaignEndPoint extends BaseEndPoint {
+    protected get Url(): string { return super.Url + "campaign/campaign"; }
 }
+
+export default GetAllEndPointable<Campaign[]>()(
+    GetEndPointable<Campaign>()(
+        PostEndPointable<Campaign>()(
+            PutEndPointable<Campaign>()(
+                DeleteEndPointable<Campaign>()(
+                    CampaignEndPoint
+                )
+            )
+        )
+    )
+);

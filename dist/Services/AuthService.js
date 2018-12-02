@@ -1,3 +1,4 @@
+"use strict";
 /*
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -12,21 +13,14 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-import { AuthContext } from '../Core/AuthContext';
-import { BaseService } from '../Core/BaseService';
-import { HttpMethod } from '../Core/HttpMethod';
-
-import { CampaignAbout } from '../Models/CampaignAbout';
-
-export class CampaignAboutService extends BaseService {
-    constructor(authContext: AuthContext) {
+Object.defineProperty(exports, "__esModule", { value: true });
+const BaseService_1 = require("../Core/BaseService");
+const AuthAboutEndPoint_1 = require("./EndPoints/Auth/AuthAboutEndPoint");
+class AuthService extends BaseService_1.BaseService {
+    get About() { return this._about; }
+    constructor(authContext) {
         super(authContext);
-    }
-    
-    protected get Url(): string { return "/campaign/about"; }
-
-    public GetCampaignServiceInfo(): Promise<CampaignAbout> {
-        return this.SendRequest<CampaignAbout>(HttpMethod.GET);
+        this._about = new AuthAboutEndPoint_1.default(this.Auth);
     }
 }
+exports.AuthService = AuthService;

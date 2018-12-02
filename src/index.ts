@@ -22,6 +22,5 @@ export { Campaign } from './Models/Campaign';
 export { CampaignAbout } from './Models/CampaignAbout';
 
 // Export Services.
-export { AuthAboutService } from './Services/AuthAboutService';
+export { AuthService } from './Services/AuthService';
 export { CampaignService } from './Services/CampaignService';
-export { CampaignAboutService } from './Services/CampaignAboutService';

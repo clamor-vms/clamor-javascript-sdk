@@ -1,4 +1,3 @@
-"use strict";
 /*
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -13,16 +12,13 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-const BaseService_1 = require("../Core/BaseService");
-const HttpMethod_1 = require("../Core/HttpMethod");
-class AuthAboutService extends BaseService_1.BaseService {
-    constructor(authContext) {
-        super(authContext);
-    }
-    get Url() { return "/auth/about"; }
-    GetAuthServiceInfo() {
-        return this.SendRequest(HttpMethod_1.HttpMethod.GET);
-    }
+
+import { BaseEndPoint, GetAllEndPointable } from '../../../Core/BaseEndPoint';
+
+import { AuthAbout } from '../../../Models/AuthAbout';
+
+class AuthAboutEndPoint extends BaseEndPoint {
+    protected get Url(): string { return super.Url + "auth/about"; }
 }
-exports.AuthAboutService = AuthAboutService;
+
+export default GetAllEndPointable<AuthAbout>()(AuthAboutEndPoint);

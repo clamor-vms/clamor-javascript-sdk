@@ -18,9 +18,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var AuthContext_1 = require("./Core/AuthContext");
 exports.AuthContext = AuthContext_1.AuthContext;
 // Export Services.
-var AuthAboutService_1 = require("./Services/AuthAboutService");
-exports.AuthAboutService = AuthAboutService_1.AuthAboutService;
+var AuthService_1 = require("./Services/AuthService");
+exports.AuthService = AuthService_1.AuthService;
 var CampaignService_1 = require("./Services/CampaignService");
 exports.CampaignService = CampaignService_1.CampaignService;
-var CampaignAboutService_1 = require("./Services/CampaignAboutService");
-exports.CampaignAboutService = CampaignAboutService_1.CampaignAboutService;
