@@ -19,4 +19,4 @@ class ObjectUtils {
         return "";
     }
 }
-exports.ObjectUtils = ObjectUtils;
+exports.default = ObjectUtils;

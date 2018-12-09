@@ -13,7 +13,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export interface Campaign {
+export default interface Campaign {
     ID: number;
     Name: string;
     Description: string;

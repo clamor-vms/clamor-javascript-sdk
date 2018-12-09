@@ -22,4 +22,4 @@ class AuthContext {
         this._token = token;
     }
 }
-exports.AuthContext = AuthContext;
+exports.default = AuthContext;

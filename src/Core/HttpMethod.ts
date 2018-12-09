@@ -13,7 +13,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export enum HttpMethod {
+export default enum HttpMethod {
     GET = 'GET',
     POST = 'POST',
     PUT = 'PUT',

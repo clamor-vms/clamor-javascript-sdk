@@ -16,11 +16,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const BaseService_1 = require("../Core/BaseService");
 const AuthAboutEndPoint_1 = require("./EndPoints/Auth/AuthAboutEndPoint");
-class AuthService extends BaseService_1.BaseService {
+class AuthService extends BaseService_1.default {
     get About() { return this._about; }
     constructor(authContext) {
         super(authContext);
         this._about = new AuthAboutEndPoint_1.default(this.Auth);
     }
 }
-exports.AuthService = AuthService;
+exports.default = AuthService;

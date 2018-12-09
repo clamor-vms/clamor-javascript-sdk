@@ -1,3 +1,3 @@
-export interface CampaignAbout {
+export default interface CampaignAbout {
     Name: string;
 }

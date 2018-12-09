@@ -15,7 +15,12 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const BaseEndPoint_1 = require("../../../Core/BaseEndPoint");
-class CampaignEndPoint extends BaseEndPoint_1.BaseEndPoint {
+const GetAllEndPointable_1 = require("../../../Core/GetAllEndPointable");
+const GetEndPointable_1 = require("../../../Core/GetEndPointable");
+const PostEndPointable_1 = require("../../../Core/PostEndPointable");
+const PutEndPointable_1 = require("../../../Core/PutEndPointable");
+const DeleteEndPointable_1 = require("../../../Core/DeleteEndPointable");
+class CampaignEndPoint extends BaseEndPoint_1.default {
     get Url() { return super.Url + "campaign/campaign"; }
 }
-exports.default = BaseEndPoint_1.GetAllEndPointable()(BaseEndPoint_1.GetEndPointable()(BaseEndPoint_1.PostEndPointable()(BaseEndPoint_1.PutEndPointable()(BaseEndPoint_1.DeleteEndPointable()(CampaignEndPoint)))));
+exports.default = GetAllEndPointable_1.default()(GetEndPointable_1.default()(PostEndPointable_1.default()(PutEndPointable_1.default()(DeleteEndPointable_1.default()(CampaignEndPoint)))));

@@ -13,12 +13,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { AuthContext } from '../Core/AuthContext';
-import { BaseService } from '../Core/BaseService';
+import AuthContext from '../Core/AuthContext';
+import BaseService from '../Core/BaseService';
 
 import AuthAboutEndPoint from './EndPoints/Auth/AuthAboutEndPoint';
 
-export class AuthService extends BaseService {
+export default class AuthService extends BaseService {
     private _about: any;
     public get About(): any { return this._about; }
 

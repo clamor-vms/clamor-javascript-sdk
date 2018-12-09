@@ -1,4 +1,4 @@
-export interface Campaign {
+export default interface Campaign {
     ID: number;
     Name: string;
     Description: string;

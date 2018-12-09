@@ -13,9 +13,9 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { AuthContext } from "./AuthContext";
+import AuthContext from "./AuthContext";
 
-export class BaseService {
+export default class BaseService {
     private _authContext: AuthContext;
     protected get Auth(): AuthContext {
         return this._authContext;

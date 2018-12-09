@@ -34,18 +34,18 @@ class BaseEndPoint {
             let url = this.FullUrl;
             let xhr = new XMLHttpRequest();
             switch (method) {
-                case HttpMethod_1.HttpMethod.GET:
+                case HttpMethod_1.default.GET:
                     if (postData) {
-                        url = url + "?" + ObjectUtils_1.ObjectUtils.BuildQueryString(postData);
+                        url = url + "?" + ObjectUtils_1.default.BuildQueryString(postData);
                     }
                     break;
-                case HttpMethod_1.HttpMethod.POST:
+                case HttpMethod_1.default.POST:
                     break;
-                case HttpMethod_1.HttpMethod.PUT:
+                case HttpMethod_1.default.PUT:
                     break;
-                case HttpMethod_1.HttpMethod.DELETE:
+                case HttpMethod_1.default.DELETE:
                     if (postData) {
-                        url = url + "?" + ObjectUtils_1.ObjectUtils.BuildQueryString(postData);
+                        url = url + "?" + ObjectUtils_1.default.BuildQueryString(postData);
                     }
                     break;
             }
@@ -88,60 +88,10 @@ class BaseEndPoint {
         xhr.setRequestHeader("Authorization", "Bearer " + this.Auth.Token);
     }
     DoesMethodHaveBody(method) {
-        if (method === HttpMethod_1.HttpMethod.POST || method === HttpMethod_1.HttpMethod.PUT) {
+        if (method === HttpMethod_1.default.POST || method === HttpMethod_1.default.PUT) {
             return true;
         }
         return false;
     }
 }
-exports.BaseEndPoint = BaseEndPoint;
-function GetAllEndPointable() {
-    return function (constructor) {
-        return class extends constructor {
-            GetAll() {
-                return this.SendRequest(HttpMethod_1.HttpMethod.GET, null);
-            }
-        };
-    };
-}
-exports.GetAllEndPointable = GetAllEndPointable;
-function GetEndPointable() {
-    return function (constructor) {
-        return class extends constructor {
-            Get(id) {
-                return this.SendRequest(HttpMethod_1.HttpMethod.GET, { id: id });
-            }
-        };
-    };
-}
-exports.GetEndPointable = GetEndPointable;
-function PostEndPointable() {
-    return function (constructor) {
-        return class extends constructor {
-            Post(body) {
-                return this.SendRequest(HttpMethod_1.HttpMethod.POST, body);
-            }
-        };
-    };
-}
-exports.PostEndPointable = PostEndPointable;
-function PutEndPointable() {
-    return function (constructor) {
-        return class extends constructor {
-            Put(body) {
-                return this.SendRequest(HttpMethod_1.HttpMethod.PUT, body);
-            }
-        };
-    };
-}
-exports.PutEndPointable = PutEndPointable;
-function DeleteEndPointable() {
-    return function (constructor) {
-        return class extends constructor {
-            Delete(id) {
-                return this.SendRequest(HttpMethod_1.HttpMethod.DELETE, { id: id });
-            }
-        };
-    };
-}
-exports.DeleteEndPointable = DeleteEndPointable;
+exports.default = BaseEndPoint;

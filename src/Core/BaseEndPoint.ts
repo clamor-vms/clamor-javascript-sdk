@@ -13,17 +13,12 @@
         along with this program.    If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { ObjectUtils } from "../Utils/ObjectUtils";
+import ObjectUtils from "../Utils/ObjectUtils";
+import AuthContext from "./AuthContext";
+import HttpMethod from "./HttpMethod";
+import IBaseEndpoint from "./IBaseEndPoint";
 
-import { AuthContext } from "./AuthContext";
-
-import { HttpMethod } from "./HttpMethod";
-
-interface IBaseEndPoint {
-    SendRequest<ReturnType>(method: HttpMethod, postData: {} | null): Promise<ReturnType>;
-}
-
-export class BaseEndPoint implements IBaseEndPoint {
+export default class BaseEndPoint implements IBaseEndPoint {
     private _authContext: AuthContext;
     protected get Auth(): AuthContext {
         return this._authContext;
@@ -108,7 +103,6 @@ export class BaseEndPoint implements IBaseEndPoint {
 
     protected AuthLogic(xhr: XMLHttpRequest) {
         xhr.setRequestHeader("Content-type", "application/json");
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhr.setRequestHeader("Authorization", "Bearer " + this.Auth.Token);
     }
 
@@ -118,54 +112,4 @@ export class BaseEndPoint implements IBaseEndPoint {
         }
         return false;
     }
-}
-
-export function GetAllEndPointable<TRet>() {
-    return function<T extends {new(...args:any[]):IBaseEndPoint}>(constructor:T) {
-        return class extends constructor {
-            public GetAll(): Promise<TRet> {
-                return this.SendRequest<TRet>(HttpMethod.GET, null);
-            }
-        };
-    };
-}
-
-export function GetEndPointable<TRet>() {
-    return function<T extends {new(...args:any[]):IBaseEndPoint}>(constructor:T) {
-        return class extends constructor {
-            public Get(id: number): Promise<TRet> {
-                return this.SendRequest<TRet>(HttpMethod.GET, {id: id});
-            }
-        };
-    };
-}
-
-export function PostEndPointable<TRet>() {
-    return function<T extends {new(...args:any[]):IBaseEndPoint}>(constructor:T) {
-        return class extends constructor {
-            public Post(body: TRet): Promise<TRet> {
-                return this.SendRequest<TRet>(HttpMethod.POST, body);
-            }
-        };
-    };
-}
-
-export function PutEndPointable<TRet>() {
-    return function<T extends {new(...args:any[]):IBaseEndPoint}>(constructor:T) {
-        return class extends constructor {
-            public Put(body: TRet): Promise<TRet> {
-                return this.SendRequest<TRet>(HttpMethod.PUT, body);
-            }
-        };
-    };
-}
-
-export function DeleteEndPointable<TRet>() {
-    return function<T extends {new(...args:any[]):IBaseEndPoint}>(constructor:T) {
-        return class extends constructor {
-            public Delete(id: number): Promise<Boolean> {
-                return this.SendRequest<Boolean>(HttpMethod.DELETE, {id: id});
-            }
-        };
-    };
 }

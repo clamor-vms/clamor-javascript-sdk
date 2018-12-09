@@ -1,3 +1,3 @@
-export interface AuthAbout {
+export default interface AuthAbout {
     Name: string;
 }

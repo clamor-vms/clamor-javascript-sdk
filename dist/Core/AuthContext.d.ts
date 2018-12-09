@@ -1,4 +1,4 @@
-export declare class AuthContext {
+export default class AuthContext {
     private _domain;
     readonly Domain: string;
     private _token;

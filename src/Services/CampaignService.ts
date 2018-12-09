@@ -13,13 +13,13 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { AuthContext } from '../Core/AuthContext';
-import { BaseService } from '../Core/BaseService';
+import AuthContext from '../Core/AuthContext';
+import BaseService from '../Core/BaseService';
 
 import CampaignAboutEndPoint from './EndPoints/Campaign/CampaignAboutEndPoint';
 import CampaignEndPoint from './EndPoints/Campaign/CampaignEndPoint';
 
-export class CampaignService extends BaseService {
+export default class CampaignService extends BaseService {
     private _about: any;
     public get About(): any { return this._about; }
 

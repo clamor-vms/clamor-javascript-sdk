@@ -13,6 +13,6 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export interface AuthAbout {
+export default interface AuthAbout {
     Name: string;
 }

@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const BaseService_1 = require("../Core/BaseService");
 const CampaignAboutEndPoint_1 = require("./EndPoints/Campaign/CampaignAboutEndPoint");
 const CampaignEndPoint_1 = require("./EndPoints/Campaign/CampaignEndPoint");
-class CampaignService extends BaseService_1.BaseService {
+class CampaignService extends BaseService_1.default {
     get About() { return this._about; }
     get Campaign() { return this._campaign; }
     constructor(authContext) {
@@ -26,4 +26,4 @@ class CampaignService extends BaseService_1.BaseService {
         this._campaign = new CampaignEndPoint_1.default(this.Auth);
     }
 }
-exports.CampaignService = CampaignService;
+exports.default = CampaignService;

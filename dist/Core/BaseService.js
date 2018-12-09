@@ -22,4 +22,4 @@ class BaseService {
         this._authContext = authContext;
     }
 }
-exports.BaseService = BaseService;
+exports.default = BaseService;

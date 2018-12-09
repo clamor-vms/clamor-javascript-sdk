@@ -13,9 +13,10 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseEndPoint, GetAllEndPointable } from '../../../Core/BaseEndPoint';
+import BaseEndPoin from '../../../Core/BaseEndPoint';
+import GetAllEndPointable from '../../../Core/GetAllEndPointable';
 
-import { AuthAbout } from '../../../Models/AuthAbout';
+import AuthAbout from '../../../Models/AuthAbout';
 
 class AuthAboutEndPoint extends BaseEndPoint {
     protected get Url(): string { return super.Url + "auth/about"; }

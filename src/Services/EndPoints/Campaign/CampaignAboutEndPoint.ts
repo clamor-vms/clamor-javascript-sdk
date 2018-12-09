@@ -13,9 +13,10 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseEndPoint, GetAllEndPointable } from '../../../Core/BaseEndPoint';
+import BaseEndPoint from '../../../Core/BaseEndPoint';
+import GetAllEndPointable from '../../../Core/GetAllEndPointable';
 
-import { CampaignAbout } from '../../../Models/CampaignAbout';
+import CampaignAbout from '../../../Models/CampaignAbout';
 
 class CampaignAboutEndPoint extends BaseEndPoint {
     protected get Url(): string { return super.Url + "campaign/about"; }

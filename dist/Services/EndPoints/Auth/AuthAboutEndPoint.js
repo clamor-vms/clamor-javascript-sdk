@@ -14,8 +14,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const BaseEndPoint_1 = require("../../../Core/BaseEndPoint");
-class AuthAboutEndPoint extends BaseEndPoint_1.BaseEndPoint {
+const GetAllEndPointable_1 = require("../../../Core/GetAllEndPointable");
+class AuthAboutEndPoint extends BaseEndPoint {
     get Url() { return super.Url + "auth/about"; }
 }
-exports.default = BaseEndPoint_1.GetAllEndPointable()(AuthAboutEndPoint);
+exports.default = GetAllEndPointable_1.default()(AuthAboutEndPoint);

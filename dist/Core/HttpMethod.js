@@ -14,10 +14,11 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = ;
 var HttpMethod;
 (function (HttpMethod) {
     HttpMethod["GET"] = "GET";
     HttpMethod["POST"] = "POST";
     HttpMethod["PUT"] = "PUT";
     HttpMethod["DELETE"] = "DELETE";
-})(HttpMethod = exports.HttpMethod || (exports.HttpMethod = {}));
+})(HttpMethod || (HttpMethod = {}));
